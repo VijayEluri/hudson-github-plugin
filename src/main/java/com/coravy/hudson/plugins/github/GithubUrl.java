@@ -56,4 +56,14 @@ public final class GithubUrl {
         return this.baseUrl;
     }
 
+    /**
+     * Returns the URL to a particular commit.
+     * 
+     * @param id - the git SHA1 hash
+     * @return URL String (e.g. http://github.com/juretta/hudson-github-plugin/commit/5e31203faea681c41577b685818a361089fac1fc)
+     */
+    public String commitId(final String id) {
+        return new StringBuilder().append(baseUrl).append("commit/").append(id).toString();
+    }
+
 }
