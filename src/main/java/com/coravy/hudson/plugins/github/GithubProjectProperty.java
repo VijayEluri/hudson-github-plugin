@@ -3,18 +3,23 @@
  */
 package com.coravy.hudson.plugins.github;
 
+import hudson.Extension;
 import hudson.model.AbstractProject;
 import hudson.model.Action;
 import hudson.model.Job;
 import hudson.model.JobProperty;
 import hudson.model.JobPropertyDescriptor;
+import net.sf.json.JSONObject;
 
-import org.apache.commons.lang.StringUtils;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 
 /**
+ * Stores the github related project properties.
+ * <p>
+ * As of now this is only the URL to the github project.
  * 
+ * @todo Should we store the GithubUrl instead of the String?
  * @author Stefan Saasen <stefan@coravy.com>
  */
 public final class GithubProjectProperty extends
@@ -23,23 +28,18 @@ public final class GithubProjectProperty extends
     /**
      * This will the URL to the project main branch.
      */
-    private final String projectUrl;
+    private String projectUrl;
 
     @DataBoundConstructor
     public GithubProjectProperty(String projectUrl) {
-        if (StringUtils.isBlank(projectUrl)) {
-            projectUrl = null;
-        } else if (!projectUrl.endsWith("/")) {
-            projectUrl += '/';
-        }
-        this.projectUrl = projectUrl;
+        this.projectUrl = new GithubUrl(projectUrl).baseUrl();
     }
 
     /**
      * @return the projectUrl
      */
-    public String getProjectUrl() {
-        return projectUrl;
+    public GithubUrl getProjectUrl() {
+        return new GithubUrl(projectUrl);
     }
 
     @Override
@@ -49,11 +49,6 @@ public final class GithubProjectProperty extends
         }
         return null;
     }
-
-    /*
-     * @Override public Action getJobAction(Job<?, ?> job) { return new
-     * GithubLinkAction((AbstractProject) job);//?? }
-     */
 
     @Override
     public JobPropertyDescriptor getDescriptor() {
@@ -78,20 +73,15 @@ public final class GithubProjectProperty extends
         }
 
         @Override
-        public JobProperty<?> newInstance(StaplerRequest req)
-                throws FormException {
-            try {
-                String projectUrl = req.getParameter("github.projectUrl");
-                if (null != projectUrl) {
-                    return new GithubProjectProperty(projectUrl);
-                }
-                return null;
-            } catch (IllegalArgumentException e) {
-                throw new FormException("github.githubPage",
-                        "github.githubPage");
+        public JobProperty<?> newInstance(StaplerRequest req,
+                JSONObject formData) throws FormException {
+            GithubProjectProperty tpp = req.bindJSON(
+                    GithubProjectProperty.class, formData);
+            if (tpp.projectUrl == null) {
+                tpp = null; // not configured
             }
+            return tpp;
         }
 
     }
-
 }

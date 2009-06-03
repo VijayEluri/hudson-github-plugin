@@ -39,7 +39,7 @@ public final class GithubLinkAction implements Action {
      * @see hudson.model.Action#getUrlName()
      */
     public String getUrlName() {
-        return projectProperty.getProjectUrl();
+        return projectProperty.getProjectUrl().baseUrl();
     }
 
 }

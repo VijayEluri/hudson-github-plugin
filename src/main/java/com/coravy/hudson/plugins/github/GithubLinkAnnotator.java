@@ -13,7 +13,11 @@ import java.util.regex.Pattern;
  * This class annotates changelog links.
  * <p>
  * It's based on the TracLinkAnnotator.
+ * <p>
  * 
+ * @todo Change the annotator to use GithubUrl instead of the String url.
+ *       Knowledge about the github url structure should be encapsulated in
+ *       GithubUrl.
  * @author Stefan Saasen <stefan@coravy.com>
  */
 @Extension
@@ -27,7 +31,7 @@ public class GithubLinkAnnotator extends ChangeLogAnnotator {
         if (null == p || null == p.getProjectUrl()) {
             return;
         }
-        annotate(p.getProjectUrl(), text);
+        annotate(p.getProjectUrl().baseUrl(), text);
     }
 
     void annotate(final String url, final MarkupText text) {
