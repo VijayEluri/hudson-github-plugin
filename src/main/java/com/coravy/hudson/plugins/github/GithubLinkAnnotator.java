@@ -4,6 +4,7 @@ import hudson.Extension;
 import hudson.MarkupText;
 import hudson.MarkupText.SubText;
 import hudson.model.AbstractBuild;
+import hudson.plugins.git.GitChangeSet;
 import hudson.scm.ChangeLogAnnotator;
 import hudson.scm.ChangeLogSet.Entry;
 
@@ -31,12 +32,18 @@ public class GithubLinkAnnotator extends ChangeLogAnnotator {
         if (null == p || null == p.getProjectUrl()) {
             return;
         }
-        annotate(p.getProjectUrl().baseUrl(), text);
+        annotate(p.getProjectUrl(), text, change);
     }
 
-    void annotate(final String url, final MarkupText text) {
+    void annotate(final GithubUrl url, final MarkupText text, final Entry change) {
+        final String base = url.baseUrl();
         for (LinkMarkup markup : MARKUPS) {
-            markup.process(text, url);
+            markup.process(text, base);
+        }
+        
+        if(change instanceof GitChangeSet) {
+            GitChangeSet cs = (GitChangeSet)change;
+            text.wrapBy("", " (<a href='"+url.commitId(cs.getId())+"'>commit: "+cs.getId()+"</a>)");
         }
     }
 

@@ -30,7 +30,7 @@ public class GithubLinkAnnotatorTest {
         MarkupText markupText = new MarkupText(originalText);
 
         GithubLinkAnnotator annotator = new GithubLinkAnnotator();
-        annotator.annotate(GITHUB_URL, markupText);
+        annotator.annotate(new GithubUrl(GITHUB_URL), markupText, null);
 
         assertEquals(expectedAnnotatedText, markupText.toString());
     }
