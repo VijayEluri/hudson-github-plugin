@@ -73,7 +73,23 @@
 			</plugin>
 		</plugins>
 	</build>
-
+  <reporting>
+    <plugins>
+    <plugin>
+      <groupId>org.codehaus.mojo</groupId>
+      <artifactId>findbugs-maven-plugin</artifactId>
+      <version>1.2</version>
+      <configuration>
+        <xmlOutput>true</xmlOutput>
+        <threshold>Low</threshold>
+        <effort>Default</effort>
+        <debug>true</debug>
+        <relaxed>false</relaxed>
+        <findbugsXmlOutput>true</findbugsXmlOutput>
+       </configuration>
+    </plugin>
+   </plugins>
+  </reporting>
 	<!--
 		Get everything from http://maven.glassfish.org/content/groups/public/
 		, which aggregates everything we need, including central.
