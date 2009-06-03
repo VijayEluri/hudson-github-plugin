@@ -4,10 +4,6 @@
 package com.coravy.hudson.plugins.github;
 
 import hudson.Plugin;
-import hudson.model.Jobs;
-import hudson.scm.RepositoryBrowsers;
-
-import com.coravy.hudson.plugins.github.browser.GithubBrowser;
 
 /**
  * 
