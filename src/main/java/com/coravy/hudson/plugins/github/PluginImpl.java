@@ -5,6 +5,9 @@ package com.coravy.hudson.plugins.github;
 
 import hudson.Plugin;
 import hudson.model.Jobs;
+import hudson.scm.RepositoryBrowsers;
+
+import com.coravy.hudson.plugins.github.browser.GithubBrowser;
 
 /**
  * 
@@ -27,7 +30,7 @@ public class PluginImpl extends Plugin {
      */
     @Override
     public void start() throws Exception {
-        Jobs.PROPERTIES.add(GithubProjectProperty.DESCRIPTOR);
+        //Jobs.PROPERTIES.add(GithubProjectProperty.DESCRIPTOR);
     }
 
     /*

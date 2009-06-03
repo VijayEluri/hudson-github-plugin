@@ -49,14 +49,15 @@ public final class GithubProjectProperty extends
         }
         return null;
     }
-
+    /*
     @Override
     public JobPropertyDescriptor getDescriptor() {
         return DESCRIPTOR;
     }
 
     public static final DescriptorImpl DESCRIPTOR = new DescriptorImpl();
-
+    */
+    @Extension
     public static final class DescriptorImpl extends JobPropertyDescriptor {
 
         public DescriptorImpl() {
