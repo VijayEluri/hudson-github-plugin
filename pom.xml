@@ -13,7 +13,7 @@
 	<packaging>hpi</packaging>
 	<version>0.1-SNAPSHOT</version>
 	<name>Github plugin</name>
-	<!-- <url>http://wiki.hudson-ci.org/display/HUDSON/Trac+Plugin</url> -->
+	<url>http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin</url>
 	
 	<dependencies>
 		<dependency>
