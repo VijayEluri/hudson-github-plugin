@@ -13,12 +13,8 @@
 	<packaging>hpi</packaging>
 	<version>0.2-SNAPSHOT</version>
 	<name>Github plugin</name>
-    <url>http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin</url>
-	<properties>
-		<!-- which version of Hudson is this plugin built against? -->
-		<hudson.version>1.300</hudson.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
-	</properties>
+	<url>http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin</url>
+	
 
 	<dependencies>
 		<dependency>
