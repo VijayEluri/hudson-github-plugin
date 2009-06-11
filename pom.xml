@@ -5,7 +5,7 @@
 	<groupId>com.coravy.hudson.plugins.github</groupId>
 	<artifactId>github</artifactId>
 	<packaging>hpi</packaging>
-	<version>0.1-SNAPSHOT</version>
+	<version>0.2-SNAPSHOT</version>
 	<name>Github plugin</name>
     <url>http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin</url>
 	<properties>
