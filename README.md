@@ -1,15 +1,7 @@
 Hudson Github Plugin
 ====================
 
-This is a WIP Github plugin for the Hudson continuous integration server.
-
-There is no public release yet, it's still an early WIP.
-
-Stay tuned...
-
-
-Homepage: [http://juretta.github.com/hudson-github-plugin/](http://juretta.github.com/hudson-github-plugin/)
-Hudson Wiki page: http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin
+Read more: [http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin](http://wiki.hudson-ci.org/display/HUDSON/Github+Plugin)
 
 Issues
 ------
@@ -61,14 +53,6 @@ Plugin releases
 ---------------
 
 	mvn release:prepare release:perform -Dusername=juretta -Dpassword=******
-
-Ressources
-----------
-
-Hudson Plugins:
-
- * http://wiki.hudson-ci.org/display/HUDSON/Plugin+structure
- * http://wiki.hudson-ci.org/display/HUDSON/Extension+points
 
 
 License
